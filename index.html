@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KitabCycle - Smart Waste Exchange</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= LOGIN ================= -->
+
+    <section id="loginSection" class="login-section">
+
+        <div class="login-box">
+
+            <h1>📚 KitabCycle</h1>
+
+            <p>Smart Waste Exchange</p>
+
+            <h2>Student Login</h2>
+
+            <input
+                type="text"
+                id="studentName"
+                placeholder="Student Name"
+            >
+
+            <input
+                type="email"
+                id="studentEmail"
+                placeholder="College Email"
+            >
+
+            <input
+                type="password"
+                id="studentPassword"
+                placeholder="Password"
+            >
+
+            <button onclick="studentLogin()">
+                Login
+            </button>
+
+            <p id="loginMessage"></p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= MAIN WEBSITE ================= -->
+
+    <div id="mainWebsite" style="display:none;">
+
+
+        <!-- Navigation -->
+
+        <nav>
+
+            <div class="logo">
+                📚 KitabCycle
+                <span>Smart Waste Exchange</span>
+            </div>
+
+            <div class="nav-links">
+
+                <a href="#home">Home</a>
+
+                <a href="#books">Browse Books</a>
+
+                <a href="#requests">Book Requests</a>
+
+                <a href="#sell">List a Book</a>
+
+                <a href="#ai">🤖 AI</a>
+
+                <button onclick="logoutStudent()" class="logout-btn">
+                    🚪 Logout
+               </button>
+
+            </div>
+
+        </nav>
+
+
+        <!-- ================= HOME ================= -->
+
+        <section id="home" class="hero">
+
+            <div class="hero-text">
+
+                <h1>
+                    Give Books a
+                    <span>Second Life</span>
+                </h1>
+
+                <p>
+                    KitabCycle is a smart campus reuse platform
+                    where students can sell, exchange and give away
+                    used books.
+                </p>
+
+                <a href="#books" class="button">
+                    Browse Books
+                </a>
+
+                <a href="#sell" class="button secondary">
+                    List Your Book
+                </a>
+
+            </div>
+
+            <div class="hero-image">
+                📚♻️
+            </div>
+
+        </section>
+
+
+        <!-- ================= SEARCH & FILTER ================= -->
+
+        <section class="search-section">
+
+            <h2>🔎 Find Your Next Book</h2>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search by book name or subject..."
+                onkeyup="filterBooks()"
+            >
+
+            <div class="filter-container">
+
+                <select id="categoryFilter" onchange="filterBooks()">
+
+                    <option value="">All Subjects</option>
+
+                    <option value="Mathematics">
+                        Mathematics
+                    </option>
+
+                    <option value="Physics">
+                        Physics
+                    </option>
+
+                    <option value="Chemistry">
+                        Chemistry
+                    </option>
+
+                    <option value="Programming">
+                        Programming
+                    </option>
+
+                </select>
+
+
+                <select id="departmentFilter" onchange="filterBooks()">
+
+                    <option value="">All Departments</option>
+
+                    <option value="AIML">AI&ML</option>
+
+                    <option value="AIDS">AI&DS</option>
+
+                    <option value="CCE">CCE</option>
+
+                    <option value="IT">IT</option>
+
+                    <option value="CSE">CSE</option>
+
+                    <option value="ECE">ECE</option>
+
+                    <option value="EEE">EEE</option>
+
+                    <option value="Mechanical">
+                        Mechanical
+                    </option>
+
+                    <option value="Civil">
+                        Civil
+                    </option>
+
+                </select>
+
+
+                <select id="yearFilter" onchange="filterBooks()">
+
+                    <option value="">All Years</option>
+
+                    <option value="1st Year">
+                        1st Year
+                    </option>
+
+                    <option value="2nd Year">
+                        2nd Year
+                    </option>
+
+                    <option value="3rd Year">
+                        3rd Year
+                    </option>
+
+                    <option value="4th Year">
+                        4th Year
+                    </option>
+
+                </select>
+
+
+                <select id="typeFilter" onchange="filterBooks()">
+
+                    <option value="">All Types</option>
+
+                    <option value="Sell">
+                        💰 Sell
+                    </option>
+
+                    <option value="Exchange">
+                        🔄 Exchange
+                    </option>
+
+                    <option value="Give Away">
+                        🎁 Give Away
+                    </option>
+
+                </select>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= BOOKS ================= -->
+
+        <section id="books" class="books-section">
+
+            <h2>📚 Available Books</h2>
+
+            <div id="bookContainer" class="book-container">
+
+
+                <!-- BOOK 1 -->
+
+                <div
+                    class="book-card"
+                    data-subject="Mathematics"
+                    data-department="CSE"
+                    data-year="1st Year"
+                    data-type="Exchange"
+                >
+
+                    <div class="book-icon">
+                        📘
+                    </div>
+
+                    <h3>
+                        Engineering Mathematics - I
+                    </h3>
+
+                    <div class="listing-type exchange">
+                        🔄 EXCHANGE
+                    </div>
+
+                    <p>
+                        <b>Subject:</b>
+                        Mathematics
+                    </p>
+
+                    <p>
+                        <b>Department:</b>
+                        CSE
+                    </p>
+
+                    <p>
+                        <b>Year:</b>
+                        1st Year
+                    </p>
+
+                    <p>
+                        <b>Condition:</b>
+                        Good
+                    </p>
+
+                    <p>
+                        <b>Wants:</b>
+                        Engineering Physics
+                    </p>
+
+                    <button onclick="toggleFavourite(this)">
+                        ♡ Favourite
+                    </button>
+
+                    <button onclick="contactSeller('Engineering Mathematics - I')">
+                        I'm Interested
+                    </button>
+
+                </div>
+
+
+                <!-- BOOK 2 -->
+
+                <div
+                    class="book-card"
+                    data-subject="Physics"
+                    data-department="ECE"
+                    data-year="1st Year"
+                    data-type="Give Away"
+                >
+
+                    <div class="book-icon">
+                        📗
+                    </div>
+
+                    <h3>
+                        Engineering Physics
+                    </h3>
+
+                    <div class="listing-type giveaway">
+                        🎁 GIVE AWAY
+                    </div>
+
+                    <p>
+                        <b>Subject:</b>
+                        Physics
+                    </p>
+
+                    <p>
+                        <b>Department:</b>
+                        ECE
+                    </p>
+
+                    <p>
+                        <b>Year:</b>
+                        1st Year
+                    </p>
+
+                    <p>
+                        <b>Condition:</b>
+                        Very Good
+                    </p>
+
+                    <div class="price">
+                        FREE
+                    </div>
+
+                    <button onclick="toggleFavourite(this)">
+                        ♡ Favourite
+                    </button>
+
+                    <button onclick="contactSeller('Engineering Physics')">
+                        I'm Interested
+                    </button>
+
+                </div>
+
+
+                <!-- BOOK 3 -->
+
+                <div
+                    class="book-card"
+                    data-subject="Programming"
+                    data-department="CSE"
+                    data-year="1st Year"
+                    data-type="Sell"
+                >
+
+                    <div class="book-icon">
+                        📕
+                    </div>
+
+                    <h3>
+                        Programming in C
+                    </h3>
+
+                    <div class="listing-type">
+                        💰 SELL
+                    </div>
+
+                    <p>
+                        <b>Subject:</b>
+                        Programming
+                    </p>
+
+                    <p>
+                        <b>Department:</b>
+                        CSE
+                    </p>
+
+                    <p>
+                        <b>Year:</b>
+                        1st Year
+                    </p>
+
+                    <p>
+                        <b>Condition:</b>
+                        Good
+                    </p>
+
+                    <div class="price">
+                        ₹120
+                    </div>
+
+                    <button onclick="toggleFavourite(this)">
+                        ♡ Favourite
+                    </button>
+
+                    <button onclick="contactSeller('Programming in C')">
+                        I'm Interested
+                    </button>
+
+                </div>
+
+
+                <!-- BOOK 4 -->
+
+                <div
+                    class="book-card"
+                    data-subject="Chemistry"
+                    data-department="EEE"
+                    data-year="1st Year"
+                    data-type="Sell"
+                >
+
+                    <div class="book-icon">
+                        📙
+                    </div>
+
+                    <h3>
+                        Engineering Chemistry
+                    </h3>
+
+                    <div class="listing-type">
+                        💰 SELL
+                    </div>
+
+                    <p>
+                        <b>Subject:</b>
+                        Chemistry
+                    </p>
+
+                    <p>
+                        <b>Department:</b>
+                        EEE
+                    </p>
+
+                    <p>
+                        <b>Year:</b>
+                        1st Year
+                    </p>
+
+                    <p>
+                        <b>Condition:</b>
+                        Good
+                    </p>
+
+                    <div class="price">
+                        ₹80
+                    </div>
+
+                    <button onclick="toggleFavourite(this)">
+                        ♡ Favourite
+                    </button>
+
+                    <button onclick="contactSeller('Engineering Chemistry')">
+                        I'm Interested
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= LIST BOOK ================= -->
+
+        <section id="sell" class="sell-section">
+
+            <h2>➕ List Your Book</h2>
+
+            <p>
+                Have an old textbook? Give it a new home!
+            </p>
+
+            <form id="bookForm">
+
+                <input
+                    type="text"
+                    id="bookName"
+                    placeholder="Book Name"
+                    required
+                >
+
+                <input
+                    type="text"
+                    id="subject"
+                    placeholder="Subject"
+                    required
+                >
+
+
+                <select id="department" required>
+
+                    <option value="">
+                        Select Department
+                    </option>
+
+                    <option value="AIML">AI&ML</option>
+
+                    <option value="AIDS">AI&DS</option>
+
+                    <option value="CCE">CCE</option>
+
+                    <option value="IT">IT</option>
+
+                    <option value="CSE">CSE</option>
+
+                    <option value="ECE">ECE</option>
+
+                    <option value="EEE">EEE</option>
+
+                    <option value="Mechanical">
+                        Mechanical
+                    </option>
+
+                    <option value="Civil">
+                        Civil
+                    </option>
+
+                </select>
+
+
+                <select id="year" required>
+
+                    <option value="">
+                        Select Year
+                    </option>
+
+                    <option value="1st Year">
+                        1st Year
+                    </option>
+
+                    <option value="2nd Year">
+                        2nd Year
+                    </option>
+
+                    <option value="3rd Year">
+                        3rd Year
+                    </option>
+
+                    <option value="4th Year">
+                        4th Year
+                    </option>
+
+                </select>
+
+
+                <select id="condition" required>
+
+                    <option value="">
+                        Select Condition
+                    </option>
+
+                    <option value="Excellent">
+                        Excellent
+                    </option>
+
+                    <option value="Very Good">
+                        Very Good
+                    </option>
+
+                    <option value="Good">
+                        Good
+                    </option>
+
+                    <option value="Fair">
+                        Fair
+                    </option>
+
+                </select>
+
+
+                <select id="listingType" required>
+
+                    <option value="">
+                        What do you want to do?
+                    </option>
+
+                    <option value="Sell">
+                        💰 Sell
+                    </option>
+
+                    <option value="Exchange">
+                        🔄 Exchange
+                    </option>
+
+                    <option value="Give Away">
+                        🎁 Give Away
+                    </option>
+
+                </select>
+
+
+                <input
+                    type="number"
+                    id="price"
+                    placeholder="Price (₹)"
+                >
+
+
+                <input
+                    type="text"
+                    id="exchangeBook"
+                    placeholder="Book wanted in exchange (optional)"
+                >
+
+
+                <label class="photo-label">
+                    📸 Upload Book Photo
+                </label>
+
+                <input
+                    type="file"
+                    id="bookPhoto"
+                    accept="image/*"
+                >
+
+
+                <button type="submit">
+                    Add Book
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <!-- ================= BOOK REQUEST ================= -->
+
+        <section id="requests" class="request-section">
+
+            <h2>📢 Request a Book</h2>
+
+            <p>
+                Can't find the book you need?
+                Post a request!
+            </p>
+
+            <form id="requestForm">
+
+                <input
+                    type="text"
+                    id="requestBook"
+                    placeholder="Book Name"
+                    required
+                >
+
+                <input
+                    type="text"
+                    id="requestSubject"
+                    placeholder="Subject"
+                    required
+                >
+
+                <button type="submit">
+                    Post Request
+                </button>
+
+            </form>
+
+
+            <div id="requestContainer">
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= EXCHANGE MATCHING ================= -->
+
+        <section class="matching-section">
+
+            <h2>🤝 Exchange Matching</h2>
+
+            <p>
+                KitabCycle can identify possible exchange
+                matches between students.
+            </p>
+
+            <div class="match-box">
+
+                <div>
+                    📘
+                    <b>Engineering Mathematics - I</b>
+                    <br>
+                    Wants: Engineering Physics
+                </div>
+
+                <div class="match-arrow">
+                    ⇄
+                </div>
+
+                <div>
+                    📗
+                    <b>Engineering Physics</b>
+                    <br>
+                    Wants: Engineering Mathematics - I
+                </div>
+
+            </div>
+
+            <p class="match-success">
+                🎉 Possible Exchange Match Found!
+            </p>
+
+        </section>
+
+
+        <!-- ================= FAVOURITES ================= -->
+
+        <section class="favourites-section">
+
+            <h2>❤️ My Favourite Books</h2>
+
+            <p>
+                Books you save will appear here.
+            </p>
+
+            <div id="favouriteContainer">
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= IMPACT ================= -->
+
+        <section class="impact">
+
+            <h2>
+                Our Campus Impact 🌱
+            </h2>
+
+            <div class="impact-container">
+
+                <div>
+                    <h3 id="bookCount">
+                        24
+                    </h3>
+
+                    <p>
+                        Books Reused
+                    </p>
+                </div>
+
+
+                <div>
+
+                    <h3 id="studentCount">
+                        18
+                    </h3>
+
+                    <p>
+                        Students Connected
+                    </p>
+
+                </div>
+
+
+                <div>
+
+                    <h3 id="wasteCount">
+                        12 kg
+                    </h3>
+
+                    <p>
+                        Paper Waste Reduced
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= AI ASSISTANT ================= -->
+
+        <section id="ai" class="ai-section">
+
+            <h2>🤖 KitabCycle AI Assistant</h2>
+
+            <p>
+                Ask KitabCycle for help finding books
+                or using the platform.
+            </p>
+
+            <input
+                type="text"
+                id="aiInput"
+                placeholder="Example: I need a first year maths book"
+            >
+
+            <button onclick="askAI()">
+                Ask KitabCycle AI
+            </button>
+
+            <div id="aiResponse">
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FOOTER ================= -->
+
+        <footer>
+
+            <h3>
+                📚 KitabCycle
+            </h3>
+
+            <p>
+                Smart Waste Exchange
+            </p>
+
+            <p>
+                Reuse. Share. Learn. Repeat.
+            </p>
+
+            <p>
+                © 2026 KitabCycle
+            </p>
+
+        </footer>
+
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
